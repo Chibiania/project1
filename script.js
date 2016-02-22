@@ -1,69 +1,89 @@
-//
-// var questions = [
-//   {question: "What color is the sky?", rightAnswer: "Blue", wrongAnswer: "Jose"}
-// ]
-// questions.forEach(function(question){
-//   var element = document.createElement("DIV");
-//   element.textContent = question.question;
-//   document.body.appendChild(element);
-// });
 
 var questions = [
   {
     quest: "Q1",
     rightAnswer: "Correct",
-    wrongAnswer: "Wrong"
+    wrongAnswerA: "Wrong",
+    wrongAnswerB: "Wrong"
   },
   {
     quest: "Q2",
     rightAnswer: "Correct",
-    wrongAnswer: "Wrong"
+    wrongAnswerA: "Wrong",
+    wrongAnswerB: "Wrong"
   },
   {
     quest: "Q3",
     rightAnswer: "Correct",
-    wrongAnswer: "Wrong"
+    wrongAnswerA: "Wrong",
+    wrongAnswerB: "Wrong"
   },
   {
     quest: "Q4",
     rightAnswer: "Correct",
-    wrongAnswer: "Wrong"
+    wrongAnswerA: "Wrong",
+    wrongAnswerB: "Wrong"
   },
   {
     quest: "Q5",
     rightAnswer: "Correct",
-    wrongAnswer: "Wrong"
+    wrongAnswerA: "Wrong",
+    wrongAnswerB: "Wrong"
   },
   {
     quest: "Q6",
     rightAnswer: "Correct",
-    wrongAnswer: "Wrong"
+    wrongAnswerA: "Wrong",
+    wrongAnswerB: "Wrong"
   },
   {
     quest: "Q7",
     rightAnswer: "Correct",
-    wrongAnswer: "Wrong"
+    wrongAnswerA: "Wrong",
+    wrongAnswerB: "Wrong"
   },
   {
     quest: "Q8",
     rightAnswer: "Correct",
-    wrongAnswer: "Wrong"
+    wrongAnswerA: "Wrong",
+    wrongAnswerB: "Wrong"
   },
   {
     quest: "Q9",
     rightAnswer: "Correct",
-    wrongAnswer: "Wrong"
+    wrongAnswerA: "Wrong",
+    wrongAnswerB: "Wrong"
   },
   {
     quest: "Q10",
     rightAnswer: "Correct",
-    wrongAnswer: "Wrong"
+    wrongAnswerA: "Wrong",
+    wrongAnswerB: "Wrong"
   }
 ]
 
 //goes through questions array and prints out each question
 questions.forEach(function(insertQuestion){
-  var newElement = document.createElement("section");
-  newElement.textContent = insertQuestion.quest;
-  document.body.appendChild(newElement);
+  var questElement = document.createElement("h2");
+  questElement.textContent = insertQuestion.quest;
+  document.body.appendChild(questElement);
+
+
+  //put correct answers in
+  var ansElement = document.createElement("p");
+  ansElement.textContent = insertQuestion.rightAnswer;
+  document.body.appendChild(ansElement);
+
+  //puts in wrong answer A
+  var wrongAElement = document.createElement("p");
+  wrongAElement.textContent = insertQuestion.wrongAnswerA;
+  document.body.appendChild(wrongAElement);
+
+  //puts in wrong answer B
+  var wrongBElement = document.createElement("p");
+  wrongBElement.textContent = insertQuestion.wrongAnswerB;
+  document.body.appendChild(wrongBElement);
 });
+
+
+//display answers
