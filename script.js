@@ -1,4 +1,4 @@
-
+//all the questions
 var questions = [
   {
     quest: "Q1",
@@ -74,25 +74,26 @@ questions.forEach(function(insertQuestion){
   questElement.textContent = insertQuestion.quest;
   document.getElementById("div"+i).appendChild(questElement);
 
-  //put correct answers in
-  var ansElement = document.createElement("p");
+  //right button = corrct answer
+  var ansElement = document.createElement("button");
   ansElement.textContent = insertQuestion.rightAnswer;
   ansElement.setAttribute("class", "correct");
   document.getElementById("div"+i).appendChild(ansElement);
 
-  //puts in wrong answer A
-  var wrongAElement = document.createElement("p");
+  //wrong button A = wrong answer A
+  var wrongAElement = document.createElement("button");
   wrongAElement.textContent = insertQuestion.wrongAnswerA;
   wrongAElement.setAttribute("class", "wrongA");
+  wrongAElement.setAttribute("type", "radio");
   document.getElementById("div"+i).appendChild(wrongAElement);
 
-  //puts in wrong answer B
-  var wrongBElement = document.createElement("p");
+  //wrong button B = wrong answer B
+  var wrongBElement = document.createElement("button");
   wrongBElement.textContent = insertQuestion.wrongAnswerB;
   wrongBElement.setAttribute("class", "wrongB");
+  wrongBElement.setAttribute("type", "radio");
   document.getElementById("div"+i).appendChild(wrongBElement);
   i++;
-
 });
 
 //do things to colors based on click action
@@ -100,7 +101,7 @@ questions.forEach(function(insertQuestion){
 
 //colorChange
 function colorChange(){
-  this.querySelector(".correct").style.color = "green";
-  this.querySelector(".wrongA").style.color = "red";
-  this.querySelector(".wrongB").style.color = "red";
+  this.querySelector(".correct").style.backgroundColor = "green";
+  this.querySelector(".wrongA").style.backgroundColor = "red";
+  this.querySelector(".wrongB").style.backgroundColor = "red";
 }
