@@ -2,6 +2,7 @@
 
 /*make incorrect all paragraphs red on click*/
 
-p{
-  color: blue;
+button{
+  color: black;
+  display: block;
 }
