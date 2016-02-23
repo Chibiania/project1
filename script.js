@@ -96,12 +96,44 @@ questions.forEach(function(insertQuestion){
   i++;
 });
 
+//display one question div at a time (help from stackoverflow)
+
+var totalQuestions = $('div').length;
+var currentQuestion = 0;
+$questions = $('div');
+
+//hiding all the divs
+$questions.hide();
+$($questions.get(currentQuestion)).fadeIn();
+
+//when next is clicked, the current question fades out and the next one fades in
+$('#next').click(function () {
+  $($questions.get(currentQuestion)).fadeOut(function () {
+    currentQuestion = currentQuestion + 1;
+    if (currentQuestion == totalQuestions) {
+      //var result = sum_values()
+
+      //do stuff with the result
+      //alert(result);
+      alert("You finished!");
+
+      //replay option should be put HERE
+    }
+    else {
+      $($questions.get(currentQuestion)).fadeIn();
+    }
+  });
+});
+
 //do things to colors based on click action
 //when something is clicked, change the color
-
-//colorChange
 function colorChange(){
   this.querySelector(".correct").style.backgroundColor = "green";
   this.querySelector(".wrongA").style.backgroundColor = "red";
   this.querySelector(".wrongB").style.backgroundColor = "red";
 }
+
+//slideshow
+//questions should be displayed randomly
+
+//make a play again function
