@@ -68,13 +68,18 @@ questions.forEach(function(insertQuestion){
   var element = document.createElement("div");
   document.body.appendChild(element);
   element.setAttribute("id", "div"+i);
-  element.addEventListener("click", colorChange)
-
+  $(element).one("click", colorChange);
   var questElement = document.createElement("h2");
   questElement.textContent = insertQuestion.quest;
   document.getElementById("div"+i).appendChild(questElement);
 
-  //right button = corrct answer
+  //button div
+  var buttonDiv = document.createElement("div");
+  document.body.appendChild(buttonDiv);
+  buttonDiv.setAttribute("id", "buttons");
+  $(buttonDiv).one("click", right);
+
+  //right button = correct answer
   var ansElement = document.createElement("button");
   ansElement.textContent = insertQuestion.rightAnswer;
   ansElement.setAttribute("class", "correct");
@@ -97,27 +102,31 @@ questions.forEach(function(insertQuestion){
 });
 
 //display one question div at a time (help from stackoverflow)
-
-var totalQuestions = $('div').length;
+var totalQuestions = $("div").length;
 var currentQuestion = 0;
-$questions = $('div');
+$questions = $("div");
 
 //hiding all the divs
 $questions.hide();
 $($questions.get(currentQuestion)).fadeIn();
 
 //when next is clicked, the current question fades out and the next one fades in
-$('#next').click(function () {
+$("#next").click(function () {
   $($questions.get(currentQuestion)).fadeOut(function () {
     currentQuestion = currentQuestion + 1;
     if (currentQuestion == totalQuestions) {
-      //var result = sum_values()
 
-      //do stuff with the result
-      //alert(result);
-      alert("You finished!");
+      //displaying the score
+      var element = document.createElement("div");
+      document.body.appendChild(element);
+      element.setAttribute("id", "score");
 
-      //replay option should be put HERE
+      var result = document.createElement("h2");
+      result.textContent = "Score";
+      document.getElementById("score").appendChild(result);
+
+
+      //replay option should be put HERE | clickable replay symbol?
     }
     else {
       $($questions.get(currentQuestion)).fadeIn();
@@ -128,12 +137,16 @@ $('#next').click(function () {
 //do things to colors based on click action
 //when something is clicked, change the color
 function colorChange(){
+  //$("").one("click", right);
   this.querySelector(".correct").style.backgroundColor = "green";
   this.querySelector(".wrongA").style.backgroundColor = "red";
   this.querySelector(".wrongB").style.backgroundColor = "red";
+
+
+  //use innerText or innerHtml to compare clicked values
 }
 
-//slideshow
+
 //questions should be displayed randomly
 
 //make a play again function
