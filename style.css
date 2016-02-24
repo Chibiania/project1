@@ -1,8 +1,23 @@
-/*for the answers, make them green and the incorrects red*/
+/*center divs
+float next to the left
 
-/*make incorrect all paragraphs red on click*/
+GET HP PICS FOR BACKGROUND IMAGES!!!!
+hogwarts (main pic), different house sigils png, deathly hallows?png, maruader's map, hogwarts coat of arms
+hogwarts coat of arms: click on it to enter into trivia game*/
 
-button{
-  color: black;
-  display: block;
+*{
+	box-sizing: border-box;
+}
+
+html, body{
+margin: 0 auto;
+height: 100%;
+}
+
+body{
+  background-image: url("hogwarts_castle.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
