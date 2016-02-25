@@ -1,9 +1,3 @@
-/*center divs
-float next to the left
-
-GET HP PICS FOR BACKGROUND IMAGES!!!!
-hogwarts (main pic), different house sigils png, deathly hallows?png, maruader's map, hogwarts coat of arms
-hogwarts coat of arms: click on it to enter into trivia game*/
 
 *{
 	box-sizing: border-box;
@@ -19,7 +13,6 @@ body{
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
 div{
@@ -30,7 +23,7 @@ div{
   align-items: center;
 }
 
-button{
+button, #result{
   background-color: rgba(143, 188, 236, .65);
   color: #ffffff;
   display: block;
@@ -42,6 +35,7 @@ button{
   border: 2px solid #d3d3d3;
   border-radius: 5px;
   font: 18px arial sans-serif;
+	text-align: center;
 }
 
 h2{
