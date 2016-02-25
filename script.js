@@ -83,7 +83,7 @@ questions.forEach(function(insertQuestion){
   document.body.appendChild(buttonSection);
   buttonSection.setAttribute("id", "buttons"+i);
   document.getElementById("div"+i).appendChild(buttonSection);
-  $(buttonSection).one("click", colorChange);
+  //$(buttonSection).one("click", colorChange);
 
   //right button = correct answer
   var ansElement = document.createElement("button");
@@ -91,22 +91,26 @@ questions.forEach(function(insertQuestion){
   ansElement.setAttribute("class", "correct");
   ansElement.setAttribute("data-right", "correct");
   document.getElementById("buttons"+i).appendChild(ansElement);
+  $(ansElement).one("click", colorChange);
 
   //wrong button A = wrong answer A
   var wrongAElement = document.createElement("button");
   wrongAElement.textContent = insertQuestion.wrongAnswerA;
   wrongAElement.setAttribute("class", "wrongA");
-  wrongAElement.setAttribute("data-wrong", "incorrect");
+  wrongAElement.setAttribute("data-notA", "incorrect");
   wrongAElement.setAttribute("type", "radio");
   document.getElementById("buttons"+i).appendChild(wrongAElement);
+  $(wrongAElement).one("click", colorChange);
 
   //wrong button B = wrong answer B
   var wrongBElement = document.createElement("button");
   wrongBElement.textContent = insertQuestion.wrongAnswerB;
   wrongBElement.setAttribute("class", "wrongB");
-  wrongBElement.setAttribute("data-wrong", "incorrect");
+  wrongBElement.setAttribute("data-notB", "incorrect");
   wrongBElement.setAttribute("type", "radio");
   document.getElementById("buttons"+i).appendChild(wrongBElement);
+  $(wrongBElement).one("click", colorChange);
+
   i++;
 });
 
@@ -130,69 +134,49 @@ $("#next").click(function () {
       document.body.appendChild(element);
       element.setAttribute("id", "score");
 
-      var result = document.createElement("h2");
-      result.textContent = "Score";
-      document.getElementById("score").appendChild(result);
-
-      //link yes to score somehow
-
-      //replay option should be put HERE | clickable replay symbol?
+      var scores = document.createElement("h2");
+      scores.textContent = "Score";
+      document.getElementById("score").appendChild(scores);
     }
     else {
       $($questions.get(currentQuestion)).fadeIn();
+      clicks = 0;
     }
   });
 });
 
+var clicks = 0;
+var yes = 0;
+
 //do things to colors based on click action
 //when something is clicked, change the color
 function colorChange(){
+  //whichever answer is picked, is the one that changes color
 
-  //make it so that whatever answer is picked, THAT is the one that changes color
-  this.querySelector(".correct").style.backgroundColor = "rgba(0, 128, 0, .65)";
-  this.querySelector(".wrongA").style.backgroundColor = "rgba(255, 0, 0, .65)";
-  this.querySelector(".wrongB").style.backgroundColor = "rgba(255, 0, 0, .65)";
+  if(clicks < 1){
+    if((this.getAttribute("data-right")=="correct")){
+      this.style.backgroundColor = "rgba(0, 128, 0, .65)";
+      yes++;
+      console.log("Yes: " + yes);
 
-  if((this.querySelector(".correct").dataset.right)=="correct"){
+      //console.log("Clicks: " + clicks);
+      clicks++;
+      console.log("Clicks: " + clicks);
+      //if clicks equals one then stop
+      event.stopPropagation();
 
-    yes++;
-    console.log("Yes: " + yes);
+    }
+    else if(((this.getAttribute("data-notA"))=="incorrect")||((this.getAttribute("data-notB"))=="incorrect")){
+      this.style.backgroundColor = "rgba(255, 0, 0, .65)";
 
-  }else if((this.querySelector(".wrongA").dataset.wrong)=="incorrect"){
-    console.log("I'm the wrongA answer!");
-    
-  }else if((this.querySelector(".wrongB").dataset.wrong)=="incorrect"){
-    console.log("I'm the wrongB answer!");
+      clicks++;
+      console.log("Clicks: " + clicks);
+      //console.log("I'm the wrongA&B answer!");
+      event.stopPropagation();
+    }
   }
-  //idk if this can get the increments right or not
-
-  //   $(this.querySelector(".correct")).click(function(){
-  //   if($(this).prop("class") == "correct"){
-  //    right();
-  //   }
-  //   else {
-  //     console.log("nah b");
-  //   }
-  //  });
-
-  //use innerText or innerHtml to compare clicked values
 }
 
-var yes = 0;
-function right(){
-
-  //if .correct is chosen, increment yes
-  //if(document.querySelector(".correct").innerText==questions[0].rightAnswer){
-
-  if((document.querySelector(".correct").dataset.correct)=="correct"){
-
-
-    yes++;
-    console.log("Yes: " + yes);
-  }
-  //return yes;
-  //}
-}
 
 //questions should be displayed randomly
 
