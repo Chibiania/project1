@@ -123,6 +123,12 @@ $questions = $("div");
 $questions.hide();
 $($questions.get(currentQuestion)).fadeIn();
 
+//shuffle first questions's answers
+var buttonSwitch = document.querySelector("section");
+for (var i = buttonSwitch.children.length; i >= 0; i--) {
+  buttonSwitch.appendChild(buttonSwitch.children[Math.random() * i | 0]);
+}
+
 //when next is clicked, the current question fades out and the next one fades in
 $("#next").click(function () {
   $($questions.get(currentQuestion)).fadeOut(function () {
