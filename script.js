@@ -64,6 +64,20 @@ var questions = [
 ];
 var i=1;
 
+//welcome screen
+var first = document.createElement("div");
+document.body.appendChild(first);
+first.setAttribute("id", "numberOne");
+
+var welcome1 = document.createElement("h2");
+welcome1.textContent = "Harry Potter Trivia Quiz";
+document.getElementById("numberOne").appendChild(welcome1);
+
+var welcome2 = document.createElement("p");
+welcome2.innerHTML = "Test out your Harry Potter knowledge! <br> Click the next button to begin.";
+document.getElementById("numberOne").appendChild(welcome2);
+
+
 //goes through questions array and prints out each question
 questions.forEach(function(insertQuestion){
 
