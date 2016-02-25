@@ -148,6 +148,15 @@ $("#next").click(function () {
       results.textContent = "Your score is: " + yes;
       results.setAttribute("id", "result");
       document.getElementById("score").appendChild(results);
+
+      //replay option
+      var reloading = document.createElement("button");
+      reloading.textContent = "Click here to play again";
+      reloading.setAttribute("id", "again");
+      document.getElementById("score").appendChild(reloading);
+      reloading.onclick = function(){
+        window.location.reload();
+      };
     }
     else {
       $($questions.get(currentQuestion)).fadeIn();
