@@ -137,6 +137,11 @@ $("#next").click(function () {
       var scores = document.createElement("h2");
       scores.textContent = "Score";
       document.getElementById("score").appendChild(scores);
+
+      var results = document.createElement("p");
+      results.textContent = "Your score is: " + yes;
+      results.setAttribute("id", "result");
+      document.getElementById("score").appendChild(results);
     }
     else {
       $($questions.get(currentQuestion)).fadeIn();
