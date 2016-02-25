@@ -23,7 +23,7 @@ div{
   align-items: center;
 }
 
-button, #result{
+button, #result, p{
   background-color: rgba(143, 188, 236, .65);
   color: #ffffff;
   display: block;
