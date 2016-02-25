@@ -15,8 +15,8 @@ var questions = [
   {
     quest: "Year 3: Who are the Marauders and what are their animagus (or animal) form?",
     rightAnswer: "Sirius Black: dog (Padfoot), James Potter: stag (Prongs), Peter Pettigrew: rat (Wormtail), and Remus Lupin: werewolf (Moony)",
-    wrongAnswerA: "Minerva McGonagall: cat (Tabby), Albus Dumbledore: phoenix (Firetail), Rufus Scrimgeour:(!)(), and Alastor Moody: ferret (!)",
-    wrongAnswerB: "Lucius Malfoy: snake (!), Bartemius Crouch, Jr.: fox (Sly), Severus Snape: doe (!), and Regulus Black: (!) (!)"
+    wrongAnswerA: "Minerva McGonagall: cat (Tabby), Albus Dumbledore: phoenix (Firetail), Rufus Scrimgeour: beetle (Big Man), and Alastor Moody: ferret (Red Eye)",
+    wrongAnswerB: "Lucius Malfoy: snake (Silver), Bartemius Crouch, Jr.: fox (Sly), Severus Snape: doe (Whitetail), and Regulus Black: crow (Black)"
   },
   {
     quest: "Year 4: Who taught Defense Against the Dark Arts?",
@@ -85,7 +85,6 @@ questions.forEach(function(insertQuestion){
   var element = document.createElement("div");
   document.body.appendChild(element);
   element.setAttribute("id", "div"+i);
-  //element.addEventListener("click", colorChange);
 
   //questions
   var questElement = document.createElement("h2");
@@ -97,7 +96,6 @@ questions.forEach(function(insertQuestion){
   document.body.appendChild(buttonSection);
   buttonSection.setAttribute("id", "buttons"+i);
   document.getElementById("div"+i).appendChild(buttonSection);
-  //$(buttonSection).one("click", colorChange);
 
   //right button = correct answer
   var ansElement = document.createElement("button");
@@ -137,12 +135,6 @@ $questions = $("div");
 $questions.hide();
 $($questions.get(currentQuestion)).fadeIn();
 
-//shuffle first questions's answers
-var buttonSwitch = document.querySelector("section");
-for (var i = buttonSwitch.children.length; i >= 0; i--) {
-  buttonSwitch.appendChild(buttonSwitch.children[Math.random() * i | 0]);
-}
-
 //when next is clicked, the current question fades out and the next one fades in
 $("#next").click(function () {
   $($questions.get(currentQuestion)).fadeOut(function () {
@@ -173,7 +165,14 @@ $("#next").click(function () {
       };
     }
     else {
-      $($questions.get(currentQuestion)).fadeIn();
+      var questionElement = $($questions.get(currentQuestion))
+
+      var buttonSwitch = document.querySelector("section#buttons" + currentQuestion);
+      for (var i = buttonSwitch.children.length; i >= 0; i--) {
+        buttonSwitch.appendChild(buttonSwitch.children[Math.random() * i | 0]);
+      }
+      questionElement.fadeIn();
+
       clicks = 0;
     }
   });
@@ -185,33 +184,20 @@ var yes = 0;
 //do things to colors based on click action
 //when something is clicked, change the color
 function colorChange(){
-  //whichever answer is picked, is the one that changes color
 
   if(clicks < 1){
     if((this.getAttribute("data-right")=="correct")){
       this.style.backgroundColor = "rgba(0, 128, 0, .65)";
       yes++;
-      console.log("Yes: " + yes);
-
-      //console.log("Clicks: " + clicks);
       clicks++;
-      console.log("Clicks: " + clicks);
       //if clicks equals one then stop
       event.stopPropagation();
-
     }
     else if(((this.getAttribute("data-notA"))=="incorrect")||((this.getAttribute("data-notB"))=="incorrect")){
       this.style.backgroundColor = "rgba(255, 0, 0, .65)";
 
       clicks++;
-      console.log("Clicks: " + clicks);
-      //console.log("I'm the wrongA&B answer!");
       event.stopPropagation();
     }
   }
 }
-
-
-//questions should be displayed randomly
-
-//make a play again function
