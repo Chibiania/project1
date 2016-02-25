@@ -23,6 +23,10 @@ div{
   align-items: center;
 }
 
+button{
+	cursor: pointer;
+}
+
 button, #result, p{
   background-color: rgba(143, 188, 236, .65);
   color: #ffffff;
@@ -54,4 +58,5 @@ h2{
 float: right;
 width: 60px;
 margin: 200px 100px 0 0;
+cursor: pointer;
 }
