@@ -12,4 +12,4 @@ Approach taken: I used medal levels
 
 Installation instructions: go to http://chibiania.github.io/game-lab/ to play game or go to the github repo at https://github.com/Chibiania/game-lab to look at the code
 
-Unsolved Problems: none
+Unsolved Problems: none (We got a badass over here)
