@@ -62,6 +62,11 @@ var questions = [
     wrongAnswerB: "Dobby, Kreacher, Winky, Hokey, Hooky, Manker, and Wockey"
   }
 ];
+/* This would be a great thing to have in a separate JSON file.
+You'd need to use jQuery's `$.getJSON` to load it.
+That would be with AJAX, with is a little strange, and we'll get to later.
+But it may be a fun challenge for now!
+*/
 var i=1;
 
 //welcome screen
@@ -125,6 +130,9 @@ questions.forEach(function(insertQuestion){
 
   i++;
 });
+/* Instead of basically writing a bunch of HTML in your Javascript file,
+what if you could get the inner HTML of a "template" div and use that instead?
+*/
 
 //display one question div at a time (help from stackoverflow)
 var totalQuestions = $("div").length;
